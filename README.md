@@ -20,3 +20,30 @@ https://itunes.apple.com/at/app/dec112/id1436609638?mt=8
 
 ### Android
 https://play.google.com/store/apps/details?id=com.meecode.dec112&hl=de
+
+## Contributing
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## Notes
+This prototype implementation was funded by [NetIdee](https://www.netidee.at). See [project blog](https://www.netidee.at/dec112) and [DEC112 homepage](https://www.dec112.at) for more informations.
+
+## History
+Developed 2018-2019
+
+## Credits
+Thanks to NetIdee and all our supporters !!
+
+## Waranty
+
+This software is a prototypically implementation.
+There is **ABSOLUTELY NO GUARANTY** that it works as expected! As emergency communication is critical, use this software at your own risk! The authors accept no liability for any incidents resulting from using this software!
+
+## License
+This project is under GNU GPLv3.
+See file gpl-3.0.txt in this project or http://www.gnu.org/licenses/gpl-3.0.html
+
+**COMMERCIAL USAGE PROHIBITED**
