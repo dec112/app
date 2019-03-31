@@ -1,0 +1,28 @@
+page-conversationPage {
+    background-color: white;
+    .label {
+        margin: 0;
+    }
+    ion-textarea {
+        border: 0.55px solid #c8c7cc;
+    }
+    ion-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .messageContentCol{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .messageControlGrid{
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+    }
+    .footer:before {
+        background-image: none !important;
+    }
+    .sendMessage {
+        float: right;
+    }
+}

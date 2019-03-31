@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ 'SUGGESTIONS' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+           <ion-icon name='checkmark' item-start></ion-icon>
+            <div item-content class="button-wrapper">
+                <button ion-button outline (click)="copySuggestionsClick('YES')">{{ 'INSERT_MESSAGE' | translate}}</button>
+                <button ion-button outline (click)="sendSuggestionsImmediatelyClick('YES')">{{ 'SEND_IMMEDIATELY' | translate}}</button>
+            </div>
+            <p class="description">{{'YES'| translate}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon name='close' item-start></ion-icon>
+            <div item-content class="button-wrapper">
+                <button ion-button outline (click)="copySuggestionsClick('NO')">{{ 'INSERT_MESSAGE' | translate}}</button>
+                <button ion-button outline (click)="sendSuggestionsImmediatelyClick('NO')">{{ 'SEND_IMMEDIATELY' | translate}}</button>
+            </div>
+            <p class="description">{{'NO'| translate}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon name='flame' item-start></ion-icon>
+            <div item-content class="button-wrapper">
+                <button ion-button outline (click)="copySuggestionsClick('SUGGESTIONS_BURNING_FIRE')">{{ 'INSERT_MESSAGE' | translate}}</button>
+                <button ion-button outline (click)="sendSuggestionsImmediatelyClick('SUGGESTIONS_BURNING_FIRE')">{{ 'SEND_IMMEDIATELY' | translate}}</button>
+            </div>
+            <p class="description">{{'SUGGESTIONS_BURNING_FIRE'| translate}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon name='flash' item-start></ion-icon>
+            <div item-content class="button-wrapper">
+                <button ion-button outline (click)="copySuggestionsClick('SUGGESTIONS_BURNING_FLASH')">{{ 'INSERT_MESSAGE' | translate}}</button>
+                <button ion-button outline (click)="sendSuggestionsImmediatelyClick('SUGGESTIONS_BURNING_FLASH')">{{ 'SEND_IMMEDIATELY' | translate}}</button>
+            </div>
+            <p class="description">{{'SUGGESTIONS_BURNING_FLASH'| translate}}</p>
+        </ion-item>
+        <ion-item>
+            <ion-icon name='key' item-start></ion-icon>
+            <div item-content class="button-wrapper">
+                <button ion-button outline (click)="copySuggestionsClick('SUGGESTIONS_KEY')">{{ 'INSERT_MESSAGE' | translate}}</button>
+                <button ion-button outline (click)="sendSuggestionsImmediatelyClick('SUGGESTIONS_KEY')">{{ 'SEND_IMMEDIATELY' | translate}}</button>
+            </div>
+            <p class="description">{{'SUGGESTIONS_KEY'| translate}}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer class="footer">
+    <button (click)="onCloseClick()" ion-button icon-right outline class="no-border" color="primary">
+        <span>{{ 'CLOSE' | translate }}</span>&nbsp;
+        <ion-icon name="exit"></ion-icon>
+    </button>
+</ion-footer>

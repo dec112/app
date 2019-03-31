@@ -1,0 +1,24 @@
+<ion-content #content>
+    <ion-list inset>
+        <button ion-item *ngFor="let page of pages" (click)="openModal(page)">
+            {{ page.title | translate }}
+        </button>
+    </ion-list>
+    <div class="about">
+        <ion-item (click)="onAppVersionClick()">
+            <ion-icon name="archive" item-start></ion-icon>
+            {{ 'APP_VERSION' | translate }}
+            <ion-badge item-end>{{appVersion}}</ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="mail" item-start></ion-icon>
+            {{ 'CONTACT' | translate }}
+            <ion-badge item-end><a href="">{{contactEmail}}</a></ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="contact" item-start></ion-icon>
+            {{ 'DEVELOPER' | translate }}
+            <ion-badge item-end>{{developer}}</ion-badge>
+        </ion-item>
+    </div>
+</ion-content>

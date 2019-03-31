@@ -1,0 +1,102 @@
+page-mainPage {
+  .emergency-call {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+  }
+  ion-footer .toolbar-background {
+    background-color: $toast-error-color !important;
+    color: white;
+  }
+  .scroll-content {
+    display: flex !important;
+    align-content: center !important;
+    align-items: center !important;
+  }
+
+  .button-grid {
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  .button-grid-bot {
+    padding: 0;
+    margin-top: 0px;
+  }
+
+  .buttons-grid {
+    padding: 0;
+  }
+
+  .button-grid-column {
+    padding: 5px;
+  }
+
+  .button-item {
+    padding: 0;
+  }
+
+  .call-number-badge {
+    background: transparent !important;
+    color: $color-dec-red;
+    font-size: 35px;
+  }
+
+  .bot-button {
+    background-color: $color-dec-green !important;
+  }
+
+  .call-warning {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 0 !important;
+  }
+
+  .call-info{
+    border: 2px solid $color-dec-green;
+  }
+
+  .call-info-icon-wrapper{
+    position: absolute;
+    text-align: center;
+  }
+
+  .call-info-icon{
+    margin-top: -30px;
+    margin-left: -15px;
+    height: 30px;
+    width: 30px;
+    color: white;
+    font-size: 28px;
+    border-radius: 20px;
+    background-color: $color-dec-green;
+    text-align: center;
+  }
+
+  .call-info {
+    padding: 15px;
+  }
+}
+
+ion-toast.networkToast.error .toast-wrapper {
+  background-color: $toast-error-color !important;
+}
+
+ion-toast.networkToast.success .toast-wrapper {
+  background-color: $toast-success-color !important;
+}
+
+.emergency-button {
+  height: 100%;
+  width: 100%;
+  padding: 3px;
+}
+
+
+.item-md.item-block .item-inner {
+  padding: 0;
+}
+
+.read-call-info-wrapper{
+  text-align: right;
+}

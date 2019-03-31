@@ -1,0 +1,210 @@
+<ion-header [hidden]="headerHidden">
+    <ion-title>{{'SETTINGS' | translate}}</ion-title>
+</ion-header>
+
+<ion-content #content>
+    <ion-card>
+        <ion-card-header>
+            {{'PERSONAL_DATA' | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label stacked>{{'USER_TITLE' | translate}}</ion-label>
+                    <ion-input type="text" name="userTitle" placeholder="{{'USER_TITLE_PLACEHOLDER' | translate}}" [value]="userConfiguration.getTitle()" (input)="userConfiguration.setTitle($event.target.value)"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'USER_FIRST_NAME' | translate}}</ion-label>
+                    <ion-input type="text" placeholder="{{'USER_FIRST_NAME_PLACEHOLDER' | translate}}" name="userFirstName" [value]="userConfiguration.getFirstName()" (input)="validateFirstName($event.target.value)"></ion-input>
+                    <ion-icon *ngIf="!isFirstNameValid" item-right name="alert" color="danger"></ion-icon>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'USER_LAST_NAME' | translate}}</ion-label>
+                    <ion-input type="text" placeholder="{{'USER_LAST_NAME_PLACEHOLDER' | translate}}" name="userLastName" [value]="userConfiguration.getLastName()" (input)="validateLastName($event.target.value)"></ion-input>
+                    <ion-icon *ngIf="!isLastNameValid" item-right name="alert" color="danger"></ion-icon>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'USER_PHONE' | translate}}</ion-label>
+                    <ion-input type="text" placeholder="{{'USER_PHONE_PLACEHOLDER' | translate}}" name="userPhone" [value]="userConfiguration.getPhoneNumber()" (input)="validatePhone($event.target.value)"></ion-input>
+                    <ion-icon *ngIf="!isPhoneValid" item-right name="alert" color="danger"></ion-icon>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'USER_EMAIL' | translate}}</ion-label>
+                    <ion-input type="text" placeholder="{{'USER_EMAIL_PLACEHOLDER' | translate}}" name="userEmail" [value]="userConfiguration.getEmail()" (input)="validateEmail($event.target.value)"></ion-input>
+                    <ion-icon *ngIf="!isEmailValid" item-right name="alert" color="danger"></ion-icon>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            {{'ADDRESS' | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label stacked>{{'USER_STREET' | translate}}</ion-label>
+                    <ion-input type="text" placeholder="{{'USER_STREET_PLACEHOLDER' | translate}}" name="userStreet" [value]="userConfiguration.getStreet()" (input)="userConfiguration.setStreet($event.target.value)"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'USER_CITY' | translate}}</ion-label>
+                    <ion-input type="text" placeholder="{{'USER_CITY_PLACEHOLDER' | translate}}" name="userCity" [value]="userConfiguration.getCity()" (input)="userConfiguration.setCity($event.target.value)"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'USER_ZIP' | translate}}</ion-label>
+                    <ion-input type="text" placeholder="{{'USER_ZIP_PLACEHOLDER' | translate}}" id="userZip" name="userZip" [value]="userConfiguration.getZipCode()" (input)="validateZipCode($event.target.value)">
+                    </ion-input>
+                    <ion-icon *ngIf="!isZipCodeValid" item-right name="alert" color="danger"></ion-icon>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'USER_COUNTRY' | translate}}</ion-label>
+                    <ion-input type="text" placeholder="{{'USER_COUNTRY_PLACEHOLDER' | translate}}" name="userCountry" [value]="userConfiguration.getCountry()" (input)="userConfiguration.setCountry($event.target.value)"></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card [hidden]="!isDebugModeEnabled()">
+        <ion-card-header>
+            {{'CONNECTION_SETTINGS' | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label stacked>{{'SIP_SERVER' | translate}}</ion-label>
+                    <ion-input type="text" name="sipServer" [value]="sipConfiguration.getWebSocketServer()" (input)="sipConfiguration.setWebSocketServer($event.target.value)" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'SIP_URI' | translate}}</ion-label>
+                    <ion-input type="text" name="sipUri" [value]="userConfiguration.getPublicIdentity()" (input)="userConfiguration.setPublicIdentity($event.target.value)" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'SIP_PRIVATE' | translate}}</ion-label>
+                    <ion-input type="text" name="sipPrivate" [value]="userConfiguration.getPrivateIdentity()" (input)="userConfiguration.setPrivateIdentity($event.target.value)" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'PASSWORD' | translate}}</ion-label>
+                    <ion-input type="password" name="password" [value]="userConfiguration.getPassword()" (input)="userConfiguration.setPassword($event.target.value)" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'SIP_REALM' | translate}}</ion-label>
+                    <ion-input type="text" name="sipRealm" [value]="userConfiguration.getRealm()" (input)="userConfiguration.setRealm($event.target.value)" required></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card  [hidden]="!isDebugModeEnabled()">
+        <ion-card-header>
+            {{'EMERGENCY_SERVICES' | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label stacked>{{'POLICE' | translate}}</ion-label>
+                    <ion-input type="text" name="targetPolice" [value]="userConfiguration.getTarget('POLICE').getPublicIdentity()" (input)="userConfiguration.getTarget('POLICE').setPublicIdentity($event.target.value)"
+                        required></ion-input>
+                    <ion-input type="text" name="urnPolice" [value]="userConfiguration.getTarget('POLICE').getUrn()" readonly></ion-input>
+                    <ion-input type="text" name="phonePolice" [value]="userConfiguration.getTarget('POLICE').getPhone()" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'FIRE_BRIGADE' | translate}}</ion-label>
+                    <ion-input type="text" name="targetFireBrigade" [value]="userConfiguration.getTarget('FIRE_BRIGADE').getPublicIdentity()" (input)="userConfiguration.getTarget('FIRE_BRIGADE').setPublicIdentity($event.target.value)"
+                        required></ion-input>
+                    <ion-input type="text" name="urnFireBrigade" [value]="userConfiguration.getTarget('FIRE_BRIGADE').getUrn()" readonly></ion-input>
+                    <ion-input type="text" name="phoneFireBrigade" [value]="userConfiguration.getTarget('FIRE_BRIGADE').getPhone()" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'AMBULANCE' | translate}}</ion-label>
+                    <ion-input type="text" name="targetAmbulance" [value]="userConfiguration.getTarget('AMBULANCE').getPublicIdentity()" (input)="userConfiguration.getTarget('AMBULANCE').setPublicIdentity($event.target.value)"
+                        required></ion-input>
+                    <ion-input type="text" name="urnAmbulance" [value]="userConfiguration.getTarget('AMBULANCE').getUrn()" readonly></ion-input>
+                    <ion-input type="text" name="phoneAmbulance" [value]="userConfiguration.getTarget('AMBULANCE').getPhone()" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'EURO_CALL' | translate}}</ion-label>
+                    <ion-input type="text" name="targetEuroCall" [value]="userConfiguration.getTarget('EURO_CALL').getPublicIdentity()" (input)="userConfiguration.getTarget('EURO_CALL').setPublicIdentity($event.target.value)"
+                        required></ion-input>
+                    <ion-input type="text" name="urnEuroCall" [value]="userConfiguration.getTarget('EURO_CALL').getUrn()" readonly></ion-input>
+                    <ion-input type="text" name="phoneEuroCall" [value]="userConfiguration.getTarget('EURO_CALL').getPhone()" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'MOUNTAIN_CALL' | translate}}</ion-label>
+                    <ion-input type="text" name="targetEuroCall" [value]="userConfiguration.getTarget('MOUNTAIN_CALL').getPublicIdentity()" (input)="userConfiguration.getTarget('MOUNTAIN_CALL').setPublicIdentity($event.target.value)"
+                        required></ion-input>
+                    <ion-input type="text" name="urnMountainCall" [value]="userConfiguration.getTarget('MOUNTAIN_CALL').getUrn()" readonly></ion-input>
+                    <ion-input type="text" name="phoneMountainCall" [value]="userConfiguration.getTarget('MOUNTAIN_CALL').getPhone()" readonly></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'BOT_CALL' | translate}}</ion-label>
+                    <ion-input type="text" name="targetEuroCall" [value]="userConfiguration.getTarget('BOT_CALL').getPublicIdentity()" (input)="userConfiguration.getTarget('BOT_CALL').setPublicIdentity($event.target.value)"
+                        required></ion-input>
+                    <ion-input type="text" name="urnBotCall" [value]="userConfiguration.getTarget('BOT_CALL').getUrn()" readonly></ion-input>
+                    <ion-input type="text" name="phoneBotCall" [value]="userConfiguration.getTarget('BOT_CALL').getPhone()" readonly></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card [hidden]="!healthKitManager.getIsAvailable()">
+        <ion-card-header>
+            {{'HEALTH_KIT_INFORMATION' | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item [hidden]="!healthKitManager.hasPermissions && !healthKitManager.getIsAvailable() && healthKitManager.getBloodType()">
+                    <ion-label stacked>{{'BLOOD_TYPE' | translate}}</ion-label>
+                    <ion-input type="text" name="bloodType" [value]="healthKitManager.getBloodType()"></ion-input>
+                </ion-item>
+                <ion-item [hidden]="!healthKitManager.hasPermissions && !healthKitManager.getIsAvailable() && healthKitManager.getGender()">
+                    <ion-label stacked>{{'GENDER' | translate}}</ion-label>
+                    <ion-input type="text" name="gender" [value]="healthKitManager.getGender()"></ion-input>
+                </ion-item>
+                <ion-item [hidden]="!healthKitManager.hasPermissions && !healthKitManager.getIsAvailable() && healthKitManager.getWeight()">
+                    <ion-label stacked>{{'WEIGHT' | translate}}</ion-label>
+                    <ion-input type="text" name="weight" [value]="healthKitManager.getWeight()"></ion-input>
+                </ion-item>
+                <ion-item [hidden]="!healthKitManager.hasPermissions && !healthKitManager.getIsAvailable() && healthKitManager.getHeight()">
+                    <ion-label stacked>{{'WEIGHT' | translate}}</ion-label>
+                    <ion-input type="text" name="height" [value]="healthKitManager.getHeight()"></ion-input>
+                </ion-item>
+                <ion-item [hidden]="!healthKitManager.hasPermissions && !healthKitManager.getIsAvailable() && healthKitManager.getDateOfBirth()">
+                    <ion-label stacked>{{'DATE_OF_BIRTH' | translate}}</ion-label>
+                    <ion-input type="text" name="dateOfBirth" [value]="healthKitManager.getDateOfBirth()"></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            {{'OTHER_INFORMATION' | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list class="additiona-values-list">
+                <ion-item *ngFor="let item of userConfiguration.getAdditionalInformation()">
+                    <ion-input type="text" type="text" [value]="item.getKey()" [readonly]="true"></ion-input>
+                    <ion-input type="text" [value]="item.getValue()" [readonly]="true"></ion-input>
+                    <ion-icon item-right name="trash" color="danger" (click)="deleteAdditionalInformation(item.getKey())"></ion-icon>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'KEY' | translate}}</ion-label>
+                    <ion-input type="text" type="text" [value]="additionalDataKey" (input)="setAdditionalDataKey($event.target.value)"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>{{'VALUE' | translate}}</ion-label>
+                    <ion-input type="text" [value]="additionalDataValue" (input)="setAdditionalDataValue($event.target.value)"></ion-input>
+                </ion-item>
+                <button (click)="addAdditionalData()" ion-button icon-right outline class="no-border" color="secondary">
+                    <span>{{ 'ADD_OTHER_INFORMATION' | translate }}</span>&nbsp;
+                    <ion-icon name="add"></ion-icon></button>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-grid class="button-grid">
+        <ion-row justify-content-center>
+            <ion-col col-auto class="button-grid-column">
+                <button (click)="onSaveConfigClick()" ion-button icon-right outline color="secondary" class="no-border">
+                    <span>{{ 'SAVE' | translate }}</span>&nbsp;
+                    <ion-icon name="done-all"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+        <ion-title>{{'DIAG' | translate}}</ion-title>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            {{'POSITION' | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                    {{'LATITUDE' | translate}}
+                <ion-badge item-end>{{positionService.getPosition().getIndicatorNS() + ' ' + positionService.getPosition().getLatitude()}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                    {{'LONGITUDE' | translate}}
+                <ion-badge item-end>{{positionService.getPosition().getIndicatorEW() + ' ' + positionService.getPosition().getLongitude()}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                    {{'ACCURACY' | translate}}
+                <ion-badge item-end>{{positionService.getPosition().getAccuracy() + 'm'}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                    {{'VALIDITY' | translate}}
+                <ion-badge item-end>{{positionService.getPosition().getAccuracy() + 'm'}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                    {{'LAST_UPDATE' | translate}}
+                <ion-badge item-end>{{positionService.getPositionLastUpdate()}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                    {{'ERROR' | translate}}
+                <ion-badge item-end>{{positionService.getPositionErrorMessage()}}</ion-badge>
+            </ion-item>
+            <ion-item>
+                <div class="map" id="map"></div>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            {{'NETWORK' | translate}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label stacked> {{ 'NETWORK_STATE' | translate }}</ion-label>
+                <ion-input type="text" name="error" [value]="networkService.getState() " [readonly]="true"></ion-input>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

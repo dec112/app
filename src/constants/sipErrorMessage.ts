@@ -1,0 +1,16 @@
+export enum SipErrorMessage {
+  NORMAL_CLOSURE = 'Normal Closure',
+  GOING_AWAY = 'Going Away',
+  PROTOCOL_ERROR = 'Protocol error',
+  UNSUPPORTED_DATA = 'Unsupported Data',
+  RESERVED = '---Reserved----',
+  NO_STATUS_RECEIVED = 'No Status Rceived',
+  ABNORMAL_CLOSURE = 'Abnormal Closure',
+  INVALID_FRAME_PAYLOAD_DATA = 'Invalid frame payload data',
+  POLICY_VIOLATION = 'Policy Violation',
+  MESSAGE_TOO_BIG = 'Message Too Big',
+  MANDATORY_EXT = 'Mandatory Ext.',
+  INTERNAL_SERVER_ERROR = 'Internal Server Error',
+  TLS_HANDSHAKRE = 'TLS handshake',
+  UNKNOWN_WEBSOCKET_ERROR = 'Unknown websocket error',
+}

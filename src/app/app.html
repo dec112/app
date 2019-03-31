@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-title>{{'TITLE' | translate}}</ion-title>
+</ion-header>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<ion-footer [hidden]="!menuVisible" #footer class="main-footer-bar">
+  <div [hidden]="!debugModeManager.isDebugModeEnabled()" class="debug-mode" (click)="onDebugModeClick()">{{'DEBUG_MODE' | translate}}</div>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let p of pages" (click)="openPage(p)" [ngClass]="{'debug-mode-enabled' : debugModeManager.isDebugModeEnabled() === true}">
+        <button [ngClass]="{'selected': currentPage.name === p.component.name}" ion-item class="menu-item footer-menu-button">
+          <div>
+            <ion-icon class="page-icon" name="{{iconProvider.getIcon(p.component)}}"></ion-icon>
+          </div>
+          <div class="button-text"> {{translate.instant(p.title)}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

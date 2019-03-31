@@ -1,0 +1,14 @@
+page-legalPage {
+    .backArrow{
+        color: black;
+    }
+
+    .navCardHeader{
+        padding: 0 !important;
+        background: transparent !important;
+
+        .toolbar-background{
+            background: $card-header-color !important;
+        }
+    }
+}

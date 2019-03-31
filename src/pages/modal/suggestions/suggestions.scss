@@ -1,0 +1,18 @@
+page-suggestions {
+    .button-wrapper{
+        display: grid;
+    }
+
+    .description{
+        white-space: pre-wrap;
+    }
+
+    .footer{
+        text-align: center;
+        border: none !important;
+    }
+
+    .footer:before{
+        background: none;
+    }
+}

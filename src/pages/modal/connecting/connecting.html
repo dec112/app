@@ -1,0 +1,17 @@
+<ion-content>
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+    <div class="loading-message" translate>CONNECTION_ESTABLISH</div>
+    <div visible=[slowlyLoading] class="loading-slow-message" translate>CONNECTING_SLOW</div>
+    <div class="loading-slow-wrapper">
+        <button ion-button icon-right outline color="danger" (click)="onCloseCallClick()" class="no-border">
+            {{'CANCEL'|translate}}
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </div>
+</ion-content>

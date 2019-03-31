@@ -1,0 +1,151 @@
+// http://ionicframework.com/docs/theming/
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+body{
+  padding-top: constant(safe-area-inset-top);//for iOS 11.2
+  padding-top: env(safe-area-inset-top);//for iOS 11.1
+}
+
+.header-md::after {
+  background: none;
+}
+.card-header {
+  background: $card-header-color;
+}
+
+.ion-page{
+  background: white !important;
+}
+
+.card ion-list {
+  margin-top: 3px;
+}
+
+.card-content,
+.card .item.card-content {
+  padding-top: 5px !important;
+}
+
+.card {
+  width: 100%;
+  margin: 0;
+  box-shadow: none !important;
+}
+
+.item {
+  padding-left: 0;
+}
+
+.menu-inner .list > .item-block {
+  border-top: none;
+}
+
+.menu-inner .item {
+  padding-left: 16px;
+}
+
+.no-border {
+  border: none !important;
+  background-color: $color-button;
+}
+
+.no-border:hover,
+.no-border.activated {
+  background-color: $color-button-hover !important;
+}
+
+.badge,
+.toolbar-background {
+  background: $app-header-color !important;
+}
+
+.toolbar-title {
+  color: $app-header-text-color;
+}
+
+.bar-button-default,
+.bar-button-clear-default,
+.bar-button-default {
+  color: white !important;
+}
+
+.page-icon {
+  padding-right: 5px;
+}
+
+.menu-item {
+  background-color: white;
+  color: $color-menu-item;
+
+  .item-inner{
+    padding: 0;
+    text-align: center;
+  }
+}
+
+.menu-list {
+  background-color: white;
+}
+
+.menu-list-inner {
+  height: calc(100% - 93px);
+}
+
+.menu-list-inner.debug-mode-enabled {
+  height: calc(100% - 120px);
+}
+
+.menu-item.selected {
+  color: $color-dec-green;
+}
+
+.copyright {
+  color: $color-menu-item;
+  padding: 10px;
+  background-color: $color-menu-item-selected-background;
+}
+
+.debug-mode {
+  padding: 5px;
+  background-color: $color-danger-red;
+  color: white;
+  text-align: center;
+}
+
+.list-md .item-input {
+  border-bottom: 1px solid $card-header-color;
+}
+
+.main-footer-bar {
+  padding-bottom: env(safe-area-inset-bottom);
+  .grid {
+    padding: 0;
+  }
+
+  .col {
+    padding: 0;
+  }
+
+  .footer-menu-button{
+    .item-inner{
+      background-image: none !important;
+      padding: 0px !important;
+    }
+  }
+}
+
+.button-text{
+  font-size: 12px;
+}

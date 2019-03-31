@@ -1,0 +1,33 @@
+<ion-header [hidden]="headerHidden === true">
+    <ion-title>{{'LEGAL' | translate}}</ion-title>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header class="navCardHeader">
+            <ion-navbar>
+                <ion-buttons left [hidden]="backButtonHidden === true">
+                    <button ion-button icon-only (click)="onBackButtonClick()">
+                        <ion-icon class="backArrow" name="arrow-back"></ion-icon>
+                    </button>
+                </ion-buttons>
+                <div>{{'LEGAL' | translate}}</div>
+            </ion-navbar>
+        </ion-card-header>
+        <ion-card-content>
+            <div [innerHTML]="'LEGAL_INFO' | translate "></div>
+        </ion-card-content>
+    </ion-card>
+    <ion-grid class="button-grid">
+        <ion-row justify-content-center>
+            <button *ngIf="legalAccepted === false" ion-button icon-right outline color="secondary" (click)="acceptLegal()" class="no-border">
+                {{'ACCEPT'| translate}}
+                <ion-icon name="checkmark"></ion-icon>
+            </button>
+            <button ion-button icon-right outline color="danger" (click)="declineLegal()" class="no-border">
+                {{'DECLINE'|translate}}
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+        <ion-title>{{'CONVERSATION' | translate}}</ion-title>
+</ion-header>
+<ion-content padding>
+    <ion-list #conversationList no-lines *ngIf="currentConversation !== undefined">
+        <ion-item *ngFor="let msg of currentConversation.getMessages()">
+            <chat-bubble [message]="msg"></chat-bubble>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer #footer>
+    <ion-textarea [(ngModel)]="messageContent" #messageContentElement>
+    </ion-textarea>
+    <ion-grid class="messageControlGrid">
+        <ion-row>
+            <ion-col class="messageContentCol">
+                <button (click)="onEndClick()" ion-button icon-right outline class="no-border" color="danger">
+                    <span>{{ 'END' | translate }}</span>&nbsp;
+                    <ion-icon name="exit"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button (click)="onSuggestionsClick()" ion-button icon-right outline class="no-border" color="danger">
+                    <span>{{ 'SUGGESTIONS' | translate }}</span>&nbsp;
+                    <ion-icon name="paper"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col class="messageContentCol">
+                <button (click)="onSendMessageClick()" (keyup.enter)="onMessageClick()" ion-button icon-right outline class="no-border sendMessage" color="secondary">
+                    <span>{{ 'SEND' | translate }}</span>&nbsp;
+                    <ion-icon name="done-all"></ion-icon>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

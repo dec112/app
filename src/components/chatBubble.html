@@ -1,0 +1,12 @@
+<div class="chatBubble">
+    <div class="chat-bubble {{message.getPosition()}}">
+        <div class="message">{{message.getText()}}</div>
+        <div class="message-detail">
+            <span class="message-time">{{message.getTime()}}</span> | <span class="message-displayname">{{message.getSenderDisplayName()}} </span>
+            <div [hidden]="message.getDirection() === getMessageDirection().IN" class="message-status">
+                <ion-icon [hidden]="!message.isSending()" class="message-status-sending" name="refresh"></ion-icon>
+                <ion-icon [hidden]="!message.isSent()" class="message-status-sent" name="checkmark"></ion-icon>
+            </div>
+        </div>
+    </div>
+</div>
