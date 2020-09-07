@@ -14,6 +14,7 @@ run `ionic serve -l` and a browser window will be opened automatically on port 8
 Note: This only runs the application. For testing the emergency call function you need all components running and the app must be configured properly.
 
 ## Download the official application from the app store
+There is absolutely no guaranty that this code repository matches the available apps in the app store.
 
 ### iOS
 https://itunes.apple.com/at/app/dec112/id1436609638?mt=8
