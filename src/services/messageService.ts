@@ -113,24 +113,19 @@ export class MessageService {
 
     var type = currentMessageType ? currentMessageType : MessageType.UNKNOWN;
     var includeText = text && text.length > 0;
-    var deviceUUID = sha1(
-      this.configurationService
-        .getConfiguration()
-        .getUserConfiguration()
-        .getPhoneNumber() +
-        this.configurationService
-          .getConfiguration()
-          .getUserConfiguration()
-          .getEmail()
-    );
     var messageInformation = MessageUtils.generateMessageCallInfoHeader(type, includeLocation && this.positionService.isPositionValid(), includeVcard, includeText);
     var messageInformationDecimal = parseInt(messageInformation, 2);
 
     // send message
     body = parts.toString();
     sipMessageOptions.extraHeaders.push('Call-Info: <urn:dec112:uid:callid:' + this.conversationManager.getActiveConversation().getKey() + ':service.dec112.at>;purpose=dec112-CallId');
-    sipMessageOptions.extraHeaders.push('Call-Info: <urn:dec112:uid:deviceid:' + deviceUUID + ':service.dec112.at>;purpose=dec112-DeviceId');
+    sipMessageOptions.extraHeaders.push('Call-Info: <urn:dec112:uid:regid:498a337b-cb54-0c98-30f7-447793309f73:service.dec112.at>;purpose=dec112-RegID');
     sipMessageOptions.extraHeaders.push('Call-Info: <urn:dec112:uid:msgtype:' + messageInformationDecimal + ':service.dec112.at>; purpose=dec112-MsgType');
+    sipMessageOptions.extraHeaders.push('Call-Info: <urn:dec112:uid:msgid:' + new Date().toISOString() + ':service.dec112.at>; purpose=dec112-MsgId');
+    sipMessageOptions.extraHeaders.push('Call-Info: <urn:dec112:clientversion:1.0.0.1:service.dec112.at>');
+    sipMessageOptions.extraHeaders.push('Call-Info: <urn:dec112:uid:language:' + language + ':service.dec112.at>;purpose=dec112-Lang');
+    sipMessageOptions.extraHeaders.push('Call-Info: http://root.dects.dec112.eu/api/v2/;purpose=dec112-SubscriberInfo');
+
     var language = window.navigator.language || this.translate.currentLang;
     var languageShortcut = 'en';
     if (language) {
@@ -185,7 +180,7 @@ export class MessageService {
   }
 
   private sipMessageReceived(evt) {
-    this.checkMessageHeaders(evt);
+    //this.checkMessageHeaders(evt);
     var userConfiguration: UserConfiguration = this.configurationService.getConfiguration().getUserConfiguration();
     var text = _.get(evt, 'message.request.body', '').toString();
     var senderUri = _.get(evt, 'message.request.from.uri', '').toString();

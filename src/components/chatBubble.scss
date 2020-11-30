@@ -20,17 +20,20 @@ chat-bubble {
     }
     .message-time {
       padding-right: 5px;
+      font-size: 10px;
     }
     .message-displayname {
       font-weight: bold;
       padding-left: 5px;
+      font-size: 10px;
     }
     .message-detail {
-      white-space: nowrap;
-      font-size: 14px;
+      white-space: normal;
+      font-size: 10px;
       padding-top: 5px;
       font-style: italic;
       float: right;
+      word-break: break-word;
     }
     .chat-bubble {
       border-radius: 5px;

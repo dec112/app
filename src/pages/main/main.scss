@@ -17,6 +17,12 @@ page-mainPage {
   .button-grid {
     padding: 0;
     margin-top: 10px;
+
+    &.test-mode{
+      .emergency-button{
+        background-color: #2fa59fba;
+      }
+    }
   }
 
   .button-grid-bot {
@@ -39,7 +45,7 @@ page-mainPage {
   .call-number-badge {
     background: transparent !important;
     color: $color-dec-red;
-    font-size: 35px;
+    font-size: 28px;
   }
 
   .bot-button {
@@ -99,4 +105,8 @@ ion-toast.networkToast.success .toast-wrapper {
 
 .read-call-info-wrapper{
   text-align: right;
+}
+
+.test-mode-toggle{
+  display: inline-block;
 }

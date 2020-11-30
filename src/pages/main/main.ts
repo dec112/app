@@ -31,6 +31,7 @@ export class MainPage {
   private subscriptions: Array<Subscription>;
 
   public callInfoRead: boolean = false;
+  public testModeEnabled: boolean = false;
 
   constructor(
     protected navController: NavController,
@@ -97,6 +98,10 @@ export class MainPage {
     configuration.setCallInfoRead(true);
     this.configurationService.saveConfiguration(configuration);
     this.callInfoRead = this.configurationService.getConfiguration().getCallInfoRead();
+  }
+
+  public handleTestModeChange (){
+    this.testModeEnabled = !this.testModeEnabled;
   }
 
   private handleNavigationParameter() {

@@ -2,7 +2,7 @@ export class SipConfiguration {
 
     private asteriskHack: boolean = false;
     private heartBeat:number = 20;
-    private webSocketServer: string = 'ws://fillinWebsockeServer.fillInDomain.at:8088';
+    private webSocketServer: string = 'ws://root.dects.dec112.eu:8088';
     private sipProxyServer: string = '';
     private stunIceServer: string = 'stun:stun.l.google.com:19302';
 

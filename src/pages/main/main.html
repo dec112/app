@@ -1,105 +1,178 @@
 <ion-header>
-  <ion-title>{{'TITLE' | translate}}</ion-title>
+    <ion-title>{{'TITLE' | translate}}</ion-title>
 </ion-header>
 
 <ion-content padding #content>
-  <div class=emergency-call>
-    <div [hidden]="callInfoRead === true" class="call-info-container">
-      <div class="call-info-icon-wrapper">
-        <ion-icon class="call-info-icon" name="information"></ion-icon>
-      </div>
-      <div class="call-info">
-        <div [innerHTML]="'CALL_INFO' | translate"></div>
-        <div class="read-call-info-wrapper"><button (click)="onCallInfoReadClick()" ion-button icon-right light outline class="no-border callInfoRead" color="secondary">
-            <span>{{ 'READ' | translate }}</span>&nbsp;
-            <ion-icon name="done-all"></ion-icon>
-          </button>
+    <div class=emergency-call>
+        <ion-item class="test-mode-toggle" (click)="handleTestModeChange()">
+            <ion-label>{{'TEST_MODE' | translate}}</ion-label>
+            <ion-toggle [checked]="testModeEnabled"></ion-toggle>
+        </ion-item>
+        <div [hidden]="callInfoRead === true" class="call-info-container">
+            <div class="call-info-icon-wrapper">
+                <ion-icon class="call-info-icon" name="information"></ion-icon>
+            </div>
+            <div class="call-info">
+                <div [innerHTML]="'CALL_INFO' | translate"></div>
+                <div class="read-call-info-wrapper">
+                    <button (click)="onCallInfoReadClick()" ion-button icon-right light outline
+                            class="no-border callInfoRead" color="secondary">
+                        <span>{{ 'READ' | translate }}</span>&nbsp;
+                        <ion-icon name="done-all"></ion-icon>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
+        <ion-grid *ngIf="!testModeEnabled" class="button-grid">
+            <ion-row>
+                <ion-col class="button-grid-column">
+                    <button color="danger" (click)="startEmergencyCall('FIRE_BRIGADE')" ion-button icon-left block
+                            outline class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">122</ion-badge>
+                                    <div>{{ 'FIRE_BRIGADE' | translate }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+                <ion-col class="button-grid-column" col-sm>
+                    <button color="danger" (click)="startEmergencyCall('POLICE')" ion-button icon-left outline
+                            class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">133</ion-badge>
+                                    <div>{{ 'POLICE' | translate }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="button-grid-column">
+                    <button color="danger" (click)="startEmergencyCall('AMBULANCE')" ion-button icon-left outline
+                            class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">144</ion-badge>
+                                    <div>{{ 'AMBULANCE' | translate }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+                <ion-col class="button-grid-column">
+                    <button color="danger" (click)="startEmergencyCall('EURO_CALL')" ion-button icon-left outline
+                            class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">112</ion-badge>
+                                    <div>{{ 'EURO_CALL' | translate }} </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="button-grid-column">
+                    <button color="danger" (click)="startEmergencyCall('MOUNTAIN_CALL')" ion-button icon-left outline
+                            class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">140</ion-badge>
+                                    <div>{{ 'MOUNTAIN_CALL' | translate }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-grid *ngIf="testModeEnabled" class="button-grid test-mode">
+            <ion-row>
+                <ion-col class="button-grid-column">
+                    <button color="danger" (click)="startEmergencyCall('FIRE_BRIGADE_TEST')" ion-button icon-left block
+                            outline class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">9122</ion-badge>
+                                    <div>{{ 'FIRE_BRIGADE' | translate }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+                <ion-col class="button-grid-column" col-sm>
+                    <button color="danger" (click)="startEmergencyCall('POLICE_TEST')" ion-button icon-left outline
+                            class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">9133</ion-badge>
+                                    <div>{{ 'POLICE' | translate }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="button-grid-column">
+                    <button color="danger" (click)="startEmergencyCall('AMBULANCE_TEST')" ion-button icon-left outline
+                            class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">9144</ion-badge>
+                                    <div>{{ 'AMBULANCE' | translate }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+                <ion-col class="button-grid-column">
+                    <button color="danger" (click)="startEmergencyCall('EURO_CALL_TEST')" ion-button icon-left outline
+                            class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">9112</ion-badge>
+                                    <div>{{ 'EURO_CALL' | translate }} </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="button-grid-column">
+                    <button color="danger" (click)="startEmergencyCall('MOUNTAIN_CALL_TEST')" ion-button icon-left
+                            outline class="no-border emergency-button">
+                        <ion-grid class="button-grid">
+                            <ion-row align-items-center>
+                                <ion-col align-self-center>
+                                    <ion-badge item-end class="call-number-badge">9140</ion-badge>
+                                    <div>{{ 'MOUNTAIN_CALL' | translate }}</div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </div>
-    <ion-grid class="button-grid">
-      <ion-row>
-        <ion-col class="button-grid-column">
-          <button color="danger" (click)="startEmergencyCall('FIRE_BRIGADE')" ion-button icon-left block outline class="no-border emergency-button">
-            <ion-grid class="button-grid">
-              <ion-row align-items-center>
-                <ion-col align-self-center>
-                  <ion-badge item-end class="call-number-badge">122</ion-badge>
-                  <div>{{ 'FIRE_BRIGADE' | translate }}</div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </button>
-        </ion-col>
-        <ion-col class="button-grid-column" col-sm>
-          <button color="danger" (click)="startEmergencyCall('POLICE')" ion-button icon-left outline class="no-border emergency-button">
-            <ion-grid class="button-grid">
-              <ion-row align-items-center>
-                <ion-col align-self-center>
-                  <ion-badge item-end class="call-number-badge">133</ion-badge>
-                  <div>{{ 'POLICE' | translate }}</div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="button-grid-column">
-          <button color="danger" (click)="startEmergencyCall('AMBULANCE')" ion-button icon-left outline class="no-border emergency-button">
-            <ion-grid class="button-grid">
-              <ion-row align-items-center>
-                <ion-col align-self-center>
-                  <ion-badge item-end class="call-number-badge">144</ion-badge>
-                  <div>{{ 'AMBULANCE' | translate }}</div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </button>
-        </ion-col>
-        <ion-col class="button-grid-column">
-          <button color="danger" (click)="startEmergencyCall('EURO_CALL')" ion-button icon-left outline class="no-border emergency-button">
-            <ion-grid class="button-grid">
-              <ion-row align-items-center>
-                <ion-col align-self-center>
-                  <ion-badge item-end class="call-number-badge">112</ion-badge>
-                  <div>{{ 'EURO_CALL' | translate }} </div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="button-grid-column">
-          <button color="danger" (click)="startEmergencyCall('MOUNTAIN_CALL')" ion-button icon-left outline class="no-border emergency-button">
-            <ion-grid class="button-grid">
-              <ion-row align-items-center>
-                <ion-col align-self-center>
-                  <ion-badge item-end class="call-number-badge">140</ion-badge>
-                  <div>{{ 'MOUNTAIN_CALL' | translate }}</div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </button>
-        </ion-col>
-        <ion-col class="button-grid-column">
-          <button color="danger" (click)="startEmergencyCall('BOT_CALL')" ion-button icon-left outline class="no-border emergency-button bot-button">
-            <ion-grid class="button-grid-bot">
-              <ion-row align-items-center>
-                <ion-col align-self-center>
-                  <ion-badge item-end class="call-number-badge">{{ 'BOT_CALL' | translate }}</ion-badge>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
 </ion-content>
 <ion-footer *ngIf="!networkService.isNetworkAvailable()">
-  <ion-toolbar>
-    <ion-title>{{'CONNECTION_NONE' | translate}}</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>{{'CONNECTION_NONE' | translate}}</ion-title>
+    </ion-toolbar>
 </ion-footer>

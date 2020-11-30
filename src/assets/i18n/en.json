@@ -181,5 +181,6 @@
     "FAQ":"FAQ",
     "REPORT_ERROR" :"Report error",
     "CONTANT": "Contact",
-    "TEST_MESSAGE": "Test-Message"
+    "TEST_MESSAGE": "Test-Message",
+    "TEST_MODE": "Enable test mode"
 }

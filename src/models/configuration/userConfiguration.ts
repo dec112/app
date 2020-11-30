@@ -14,17 +14,22 @@ export class UserConfiguration {
     private city: string = "";
     private zipCode: number;
     private country: string = "";
-    private publicIdentity: string = "";
-    private privateIdentity: string = "";
-    private password: string = "";
-    private realm: string = "";
+    private publicIdentity: string = "sip:43a550def631ef8e418fb8a9e8540435@root.dects.dec112.eu";
+    private privateIdentity: string = "43a550def631ef8e418fb8a9e8540435";
+    private password: string = "a8f4d51a7ed1d8fb36b17cd3";
+    private realm: string = "root.dects.dec112.eu";
     private targets: Array<Target> = [
-        new Target(CallTarget.POLICE, "urn:service:sos.police", "sip:fillinPolice@fillinService.fillinDomain.at", 133),
-        new Target(CallTarget.FIRE_BRIGADE, "urn:service:sos.fire", "sip:fillinFireBrigate@fillinService.fillinDomain.at", 122),
-        new Target(CallTarget.AMBULANCE, "urn:service:sos.ambulance", "sip:fillinAmbulance@fillinService.fillinDomain.at", 144),
-        new Target(CallTarget.EURO_CALL, "urn:service:sos.police", "sip:fillinEuroCall@fillinService.fillinDomain.at", 112),
-        new Target(CallTarget.MOUNTAIN_CALL, "urn:service:sos.mountain", "sip:fillinMountainCall@fillinService.fillinDomain.at", 140),
-        new Target(CallTarget.BOT_CALL, "urn:service:sos.bot", "sip:fillinBotCall@fillinService.fillinDomain.at", 555)
+        new Target(CallTarget.POLICE, "urn:service:sos.police", "sip:133@root.dects.dec112.eu", 133),
+        new Target(CallTarget.FIRE_BRIGADE, "urn:service:sos.fire", "sip:122@root.dects.dec112.eu", 122),
+        new Target(CallTarget.AMBULANCE, "urn:service:sos.ambulance", "sip:144@root.dects.dec112.eu", 144),
+        new Target(CallTarget.EURO_CALL, "urn:service:sos.police", "sip:112@root.dects.dec112.eu", 112),
+        new Target(CallTarget.MOUNTAIN_CALL, "urn:service:sos.mountain", "sip:140@root.dects.dec112.eu", 140),
+        new Target(CallTarget.BOT_CALL, "urn:service:sos.bot", "sip:fillinBotCall@fillinService.fillinDomain.at", 555),
+        new Target(CallTarget.POLICE_TEST, "urn:service:sos.police", "sip:9133@root.dects.dec112.eu", 9133),
+        new Target(CallTarget.FIRE_BRIGADE_TEST, "urn:service:sos.fire", "sip:9122@root.dects.dec112.eu", 9122),
+        new Target(CallTarget.AMBULANCE_TEST, "urn:service:sos.ambulance", "sip:9144@root.dects.dec112.eu", 9144),
+        new Target(CallTarget.EURO_CALL_TEST, "urn:service:sos.police", "sip:9112@root.dects.dec112.eu", 9112),
+        new Target(CallTarget.MOUNTAIN_CALL_TEST, "urn:service:sos.mountain", "sip:9140@root.dects.dec112.eu", 9140)
     ];
     private additionalInformation: Array<AdditionalInformation> = [];
 
@@ -161,32 +166,32 @@ export class UserConfiguration {
         return this.title + " " + this.lastName + " " + this.firstName;
     }
 
-    public setTargets(targets:Array<Target>){
+    public setTargets(targets: Array<Target>) {
         this.targets = targets;
     }
 
-    public addTarget(target:Target){
+    public addTarget(target: Target) {
         this.targets.push(target);
     }
 
-    public getTargets():Array<Target>{
+    public getTargets(): Array<Target> {
         return this.targets;
     }
 
-    public getTarget(target:CallTarget):Target{
-        var targetToReturn:Target = null;
-        for(var i = 0; i < this.targets.length; i++){
-            if(this.targets[i].getName() === target){
+    public getTarget(target: CallTarget): Target {
+        var targetToReturn: Target = null;
+        for (var i = 0; i < this.targets.length; i++) {
+            if (this.targets[i].getName() === target) {
                 targetToReturn = this.targets[i];
             }
         }
         return targetToReturn;
     }
 
-       public getTargetByStringIdentifier(target:string):Target{
-        var targetToReturn:Target = null;
-        for(var i = 0; i < this.targets.length; i++){
-            if(this.targets[i].getName().toString() === target){
+    public getTargetByStringIdentifier(target: string): Target {
+        var targetToReturn: Target = null;
+        for (var i = 0; i < this.targets.length; i++) {
+            if (this.targets[i].getName().toString() === target) {
                 targetToReturn = this.targets[i];
             }
         }
